@@ -121,7 +121,9 @@ public class ProductController {
 	}
 	@InitBinder
 	public void initialiseBinder(WebDataBinder binder) {
-		binder.setDisallowedFields("unitsInOrder", "discontinued");
+		//binder.setDisallowedFields("unitsInOrder", "discontinued");
+		binder.setAllowedFields("productId", "name", "unitPrice", "description","manufacturer", 
+				"category", "unitsInStock", "productImage","language");
 	}
 	
 	@ExceptionHandler(ProductNotFoundException.class)
