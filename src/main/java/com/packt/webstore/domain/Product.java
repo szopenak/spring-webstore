@@ -3,6 +3,9 @@ import java.math.BigDecimal;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.packt.webstore.validator.Category;
+import com.packt.webstore.validator.ProductId;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -16,6 +19,7 @@ import javax.validation.constraints.*;
 public class Product {
 	
 	@Pattern(regexp="P[0-9]+", message="{Pattern.Product.productId.validation}")
+	@ProductId
 	private String productId;
 	
 	@Size(min=4, max=50, message="{Size.Product.name.validation}")
@@ -27,7 +31,10 @@ public class Product {
 	private BigDecimal unitPrice;
 	private String description;
 	private String manufacturer;
+	@Pattern(regexp="[a-z]+", message= "{NotNull.Product.category.validation}")
+	@Category
 	private String category;
+	@Min(value=1, message="{Min.Product.unitsInStock.validation}")
 	private long unitsInStock;
 	private long unitsInOrder;
 	private boolean discontinued;
