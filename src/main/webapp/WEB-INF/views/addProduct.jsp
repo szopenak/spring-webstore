@@ -25,6 +25,7 @@
 		</section>
 		<section class="container">
 			<form:form modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
+			<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 				<fieldset>
 					<legend>Dodaj nowy produkt</legend>
 						<div class="form-group">
@@ -33,6 +34,7 @@
 							</label>
 								<div class="col-lg-10">
 								<form:input id="productId" path="productId" type="text" class="form:input-large"/>
+								<form:errors path="productId" cssClass="text-danger"/>
 								</div>
 						</div>
 						<div class="form-group">
@@ -41,6 +43,7 @@
 						</label>
 								<div class="col-lg-10">
 								<form:input id="name" path="name" type="text" class="form:input-large"/>
+								<form:errors path="name" cssClass="text-danger"/>
 								</div>
 						</div>
 						<div class="form-group">
@@ -49,6 +52,7 @@
 						</label>
 								<div class="col-lg-10">
 								<form:input id="unitPrice" path="unitPrice" type="text" class="form:input-large"/>
+								<form:errors path="unitPrice" cssClass="text-danger"/>
 								</div>
 						</div>
 						<div class="form-group">
@@ -57,6 +61,7 @@
 						</label>
 								<div class="col-lg-10">
 								<form:input id="manufacturer" path="manufacturer" type="text" class="form:input-large"/>
+								<form:errors path="manufacturer" cssClass="text-danger"/>
 								</div>
 						</div>
 						<div class="form-group">
@@ -65,6 +70,7 @@
 						</label>
 								<div class="col-lg-10">
 								<form:input id="category" path="category" type="text" class="form:input-large"/>
+								<form:errors path="category" cssClass="text-danger"/>
 								</div>
 						</div>
 
@@ -74,6 +80,7 @@
 						</label>
 								<div class="col-lg-10">
 								<form:input id="unitsInStock" path="unitsInStock" type="text" class="form:input-large"/>
+								<form:errors path="unitsInStock" cssClass="text-danger"/>
 								</div>
 						</div>
 
@@ -83,6 +90,7 @@
 							</label>
 							<div class="col-lg-10">
 							<form:textarea id="descriptionID" path="description" rows = "3" />
+							<form:errors path="description" cssClass="text-danger"/>
 							</div>
 						</div>
 
