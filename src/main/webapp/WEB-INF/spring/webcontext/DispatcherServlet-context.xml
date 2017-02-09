@@ -76,4 +76,19 @@ class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 <property name="validationMessageSource" ref="messageSource" />
 </bean>
 
+
+
+<bean id="productValidator" class="com.packt.webstore.validator.ProductValidator">
+	<property name = "springValidators">
+		<set>
+			<ref bean = "unitsInStockValidator"/>
+			<ref bean = "productImageValidator"/>
+		</set>
+	</property>
+</bean>
+
+<bean id="unitsInStockValidator" class="com.packt.webstore.validator.UnitsInStockValidator"/>
+<bean id="productImageValidator" class="com.packt.webstore.validator.ProductImageValidator"/>
+
+
 </beans>
