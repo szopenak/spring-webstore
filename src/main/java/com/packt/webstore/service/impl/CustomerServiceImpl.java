@@ -15,7 +15,6 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerRepository customerRepository;
 
 	public List<Customer> getAllCustomers() {
-		// TODO Auto-generated method stub
 		return  customerRepository.getAllCustomers();
 	}
 

@@ -6,14 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-	@RequestMapping("/")
+
+	@RequestMapping(value = "/")
 	public String welcome(Model model) {
 		model.addAttribute("greeting", "Witaj w sklepie internetowym!");
-		model.addAttribute("tagline", "Wyj¹tkowym i jedynym sklepie internetowym");
+		model.addAttribute("tagline", "WyjÄ…tkowym i jedynym sklepie internetowym");
 		return "welcome";
 	}
+
 	@RequestMapping("/welcome/greeting")
 	public String greeting() {
-	return "forward:/";
+	return "redirect:/";
 	}
 }

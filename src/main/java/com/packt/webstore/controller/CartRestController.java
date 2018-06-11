@@ -3,6 +3,7 @@ package com.packt.webstore.controller;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +20,7 @@ import com.packt.webstore.service.CartService;
 import com.packt.webstore.service.ProductService;
 
 @Controller
-@RequestMapping(value = "rest/cart")
+@RequestMapping(value = "rest/cart", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CartRestController {
 	@Autowired
 	private CartService cartService;
@@ -80,10 +81,10 @@ public class CartRestController {
 	}
 	
 	@ExceptionHandler(IllegalArgumentException.class)
-	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason="Niepoprawne ¿¹danie, sprawdŸ przesy³ane dane.")
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason="Niepoprawne ï¿½ï¿½danie, sprawdï¿½ przesyï¿½ane dane.")
 	public void handleClientErrors(Exception ex) { }
 	
 	@ExceptionHandler(Exception.class)
-	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason="Wewnêtrzny b³¹d serwera.")
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason="Wewnï¿½trzny bï¿½ï¿½d serwera.")
 	public void handleServerErrors(Exception ex) { }
 }
