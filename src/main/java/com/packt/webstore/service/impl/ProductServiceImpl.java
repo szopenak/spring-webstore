@@ -17,7 +17,6 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository productRepository;
 
 	public List<Product> getAllProducts() {
-		// TODO Auto-generated method stub
 		return productRepository.getAllProducts();
 	}
 	
@@ -25,27 +24,16 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.getProductsByCategory(category);
 		}
 
-	public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
-		return productRepository.getProductsByFilter(filterParams);
-		}
-
 	public Product getProductById(String productId) {
-		// TODO Auto-generated method stub
 		return  productRepository.getProductById(productId);
 	}
 
 	public Set<Product> getProductsByManufacturer(String manufacturer) {
-		// TODO Auto-generated method stub
 		return productRepository.getProductsByManufacturer(manufacturer);
 	}
 
-	public Set<Product> getProductsByPriceFilter(Map<String, List<String>> filterParams) {
-		// TODO Auto-generated method stub
-		return productRepository.getProductsByPriceFilter(filterParams);
-	}
 	public void addProduct(Product product) {
 		productRepository.addProduct(product);
 		}
-	
-	
+
 }

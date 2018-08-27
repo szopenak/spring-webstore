@@ -20,6 +20,7 @@ public class CartRestController {
 	private CartService cartService;
 	@Autowired
 	private ProductService productService;
+
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Cart create(@RequestBody Cart cart) {
 		return cartService.create(cart);
@@ -84,8 +85,4 @@ public class CartRestController {
 	@ExceptionHandler(ProductNotFoundException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason="Bad product.")
 	public void handleProductErrors(Exception ex) { }
-	
-	@ExceptionHandler(Exception.class)
-	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason="Internal server error.")
-	public void handleServerErrors(Exception ex) { }
 }

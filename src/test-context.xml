@@ -60,11 +60,6 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 	<property name="paramName" value="language"/>
 </bean>
 <bean class= "com.packt.webstore.interceptor.AuditingInterceptor"/>
-<bean class="com.packt.webstore.interceptor.PromoCodeInterceptor">
-	<property name="promoCode" value="OF3RTA"/>
-	<property name="errorRedirect" value="invalidPromoCode"/>
-	<property name="offerRedirect" value="products"/>
-</bean>
 </mvc:interceptors>
 
 <bean id="localeResolver"
@@ -81,13 +76,11 @@ class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 <bean id="productValidator" class="com.packt.webstore.validator.ProductValidator">
 	<property name = "springValidators">
 		<set>
-			<ref bean = "unitsInStockValidator"/>
 			<ref bean = "productImageValidator"/>
 		</set>
 	</property>
 </bean>
 
-<bean id="unitsInStockValidator" class="com.packt.webstore.validator.UnitsInStockValidator"/>
 <bean id="productImageValidator" class="com.packt.webstore.validator.ProductImageValidator"/>
 
 

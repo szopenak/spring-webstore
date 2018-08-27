@@ -7,12 +7,9 @@ import java.util.Set;
 import com.packt.webstore.domain.Product;
 
 public interface ProductService {
-	public List<Product> getAllProducts();
+	List<Product> getAllProducts();
 	List<Product> getProductsByCategory(String category);
-	
-	Set<Product> getProductsByFilter(Map<String, List<String>> filterParams);
-	public Product getProductById(String productId);
-	public Set<Product> getProductsByManufacturer(String manufacturer);
-	public Set<Product> getProductsByPriceFilter(Map<String, List<String>> filterParams);
+	Product getProductById(String productId);
+	Set<Product> getProductsByManufacturer(String manufacturer);
 	void addProduct(Product product);
 }
