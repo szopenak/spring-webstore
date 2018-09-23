@@ -1,39 +1,26 @@
 package com.packt.webstore.controller;
 
-import java.io.File;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
+import com.packt.webstore.domain.Product;
+import com.packt.webstore.exception.ProductNotFoundException;
+import com.packt.webstore.service.ProductService;
+import com.packt.webstore.validator.ProductValidator;
+import com.sun.deploy.net.HttpResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.MatrixVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.packt.webstore.domain.Product;
-import com.packt.webstore.exception.NoProductsFoundUnderCategoryException;
-import com.packt.webstore.exception.ProductNotFoundException;
-import com.packt.webstore.service.ProductService;
-import com.packt.webstore.validator.ProductValidator;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.io.File;
+import java.util.List;
 
 @RequestMapping("/products")
 @Controller
@@ -52,11 +39,8 @@ public class ProductController {
 	@RequestMapping(value = "/{category}", method = RequestMethod.GET)
 	public String getProductsByCategory(Model model, @PathVariable("category") String productCategory) {
 		List<Product> products = productService.getProductsByCategory(productCategory);	
-		if (products == null || products.isEmpty()) {
-			throw new NoProductsFoundUnderCategoryException();
-		}
-	model.addAttribute("products", products);
-	return "products";
+		model.addAttribute("products", products);
+		return "products";
 	}
 
 	@RequestMapping("/product")
@@ -114,5 +98,6 @@ public class ProductController {
 		mav.setViewName("productNotFound");
 		return mav;
 	}
+
 }
 

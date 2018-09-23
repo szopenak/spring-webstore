@@ -1,16 +1,15 @@
 package com.packt.webstore.domain.repository.impl;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import org.springframework.stereotype.Repository;
 import com.packt.webstore.domain.Product;
 import com.packt.webstore.domain.repository.ProductRepository;
 import com.packt.webstore.exception.ProductNotFoundException;
+import org.springframework.stereotype.Repository;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository{
@@ -42,7 +41,7 @@ public class InMemoryProductRepository implements ProductRepository{
 	public Product getProductById(String productId) {
 			Product productById = null;
 			for(Product product : listOfProducts) {
-				if(product!=null && product.getProductId()!=null && product.getProductId().equals(productId)){
+				if(product!=null && product.getProductId()!=null && product.getProductId().equalsIgnoreCase(productId)){
 					productById = product;
 					break;
 				}
@@ -71,7 +70,7 @@ public class InMemoryProductRepository implements ProductRepository{
 			}
 		}
 		if(list.isEmpty()){
-			throw new IllegalArgumentException("Brak produkt�w od :"+ manufacturer);
+			throw new IllegalArgumentException("Brak produktow od :"+ manufacturer);
 		}
 		return list;
 	}
