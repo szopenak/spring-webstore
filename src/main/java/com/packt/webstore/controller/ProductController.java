@@ -64,20 +64,9 @@ public class ProductController {
 		String[] suppressedFields = result.getSuppressedFields();
 
 		if (suppressedFields.length > 0) {
-		throw new RuntimeException("Pr�ba wi�zania niedozwolonych p�l:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+		throw new RuntimeException("Proba wiazania niedozwolonych pol:" + StringUtils.arrayToCommaDelimitedString(suppressedFields));
 		}
-		
-		MultipartFile productImage = newProduct.getProductImage();
-		System.out.println(productImage.getName());
-		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-		System.out.println(rootDirectory);
-		if (productImage!=null && !productImage.isEmpty()) {
-		try {
-		productImage.transferTo(new File(rootDirectory+"resources\\images\\"+newProduct.getProductId() + ".jpg"));
-		} catch (Exception e) {
-		throw new RuntimeException("Niepowodzenie podczas pr�by zapisu obrazka produktu", e);
-		}
-		}
+
 		productService.addProduct(newProduct);
 		return "redirect:/products";
 	}
@@ -86,7 +75,7 @@ public class ProductController {
 	public void initialiseBinder(WebDataBinder binder) {
 		binder.setValidator(productValidator);
 		binder.setAllowedFields("productId", "name", "unitPrice", "description","manufacturer",
-				"category", "unitsInStock", "productImage","language");
+				"category", "unitsInStock", "language");
 	}
 	
 	@ExceptionHandler(ProductNotFoundException.class)

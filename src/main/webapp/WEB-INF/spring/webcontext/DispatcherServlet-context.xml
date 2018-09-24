@@ -59,9 +59,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 <bean class= "org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 	<property name="paramName" value="language"/>
 </bean>
-<bean class= "com.packt.webstore.interceptor.AuditingInterceptor"/>
 </mvc:interceptors>
-
 <bean id="localeResolver"
 class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 <property name="defaultLocale" value="en_US"/>
@@ -72,16 +70,8 @@ class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 </bean>
 
 
-
 <bean id="productValidator" class="com.packt.webstore.validator.ProductValidator">
-	<property name = "springValidators">
-		<set>
-			<ref bean = "productImageValidator"/>
-		</set>
-	</property>
 </bean>
-
-<bean id="productImageValidator" class="com.packt.webstore.validator.ProductImageValidator"/>
 
 
 </beans>

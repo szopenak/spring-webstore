@@ -35,10 +35,7 @@
 			</p>
 			<h4>${product.unitPrice}PLN</h4>
 			<p>
-			<a href="#" class="btn btn-warning btn-large">
-			<span class="glyphicon-shopping-cart glyphicon"></span>
-			Zamów teraz
-			</a>
+
 			<a href=" <spring:url value="/products" />" class="btn btn-warning btn-large">
 			<span class="glyphicon glyphicon-arrow-left"></span>
 			Powrót

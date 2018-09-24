@@ -11,9 +11,6 @@
 	<body>
 		<section>
 		<div class="jumbotron">
-		<a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger btn-mini pull-right">
-			Wyloguj się
-		</a>
 		<div class="pull-right" style="padding-right:50px">
 			<a href="?language=en_US" >angielski</a>|<a href="?language=nl">holenderski</a>|<a href="?language=pl">polski</a>
 		</div>
@@ -103,14 +100,6 @@
 						<form:radiobutton path="condition" value="Old" />Used
 						<form:radiobutton path="condition" value="Refurbished" />Refurbished
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-lg-2" for="productImage">
-						<spring:message code="addProduct.form.productImage.label"/>
-						</label>
-						<div class="col-lg-10">
-						<form:input id="productImage" path="productImage" type="file" class="form:input-large" />
-					</div>
 					</div>
 					<div class="form-group">
 						<div class="col-lg-offset-2 col-lg-10">
